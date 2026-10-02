@@ -1,0 +1,11 @@
+{
+  "dataset": "data/raw/N-CMAPSS_DS02-006.h5",
+  "window": 60,
+  "stride": 60,
+  "chunk_rows": 120000,
+  "workers": 4,
+  "seed": 410,
+  "benchmark_workers": [1, 2, 4, 8],
+  "benchmark_chunk_rows": [1024, 8192, 120000],
+  "benchmark_repeats": 3
+}

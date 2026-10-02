@@ -1,0 +1,10 @@
+# Preserve exact source and result bytes recorded in SHA-256 manifests.
+* -text
+*.pdf binary
+*.docx binary
+*.pptx binary
+*.png binary
+*.parquet binary
+*.joblib binary
+*.pt binary
+*.zip binary

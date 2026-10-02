@@ -1,0 +1,102 @@
+{
+  "selected_model": "cnn_1d",
+  "candidate_only": true,
+  "config": {
+    "window": 60,
+    "stride": 60,
+    "epochs": 12,
+    "batch_size": 512,
+    "learning_rate": 0.001,
+    "target_scale": 100.0,
+    "seed": 410,
+    "optimizer": "Adam",
+    "loss": "engine/cycle-weighted MSE of target/100",
+    "architecture": "Conv1d(18,16,5,pad2)-ReLU-Conv1d(16,32,5,pad2)-ReLU-AdaptiveAvgPool1d(1)-Linear(32,1)-Softplus"
+  },
+  "cv_macro_engine_cycle_rmse": 6.575257579485576,
+  "cv_macro_engine_cycle_mae": 4.8826078573862715,
+  "cv_n_heldout_engines": 6,
+  "test_metrics": {
+    "windows": {
+      "macro_engine_mae": 4.675932725270589,
+      "macro_engine_rmse": 6.095227559407552,
+      "micro_mae": 4.960676670074463,
+      "micro_rmse": 6.568467617034912,
+      "n_windows": 20796,
+      "n_engines": 3,
+      "per_engine": [
+        {
+          "unit": 11,
+          "n_windows": 11030,
+          "mae": 6.249836444854736,
+          "rmse": 7.786595344543457
+        },
+        {
+          "unit": 14,
+          "n_windows": 2574,
+          "mae": 4.701723575592041,
+          "rmse": 6.317843437194824
+        },
+        {
+          "unit": 15,
+          "n_windows": 7192,
+          "mae": 3.0762381553649902,
+          "rmse": 4.181243896484375
+        }
+      ]
+    },
+    "cycles": {
+      "macro_engine_mae": 4.52059006690979,
+      "macro_engine_rmse": 5.695465882619222,
+      "micro_mae": 4.461333751678467,
+      "micro_rmse": 5.876364231109619,
+      "n_cycles": 202,
+      "n_engines": 3,
+      "per_engine": [
+        {
+          "unit": 11,
+          "n_cycles": 59,
+          "mae": 6.186064720153809,
+          "rmse": 7.4778900146484375
+        },
+        {
+          "unit": 14,
+          "n_cycles": 76,
+          "mae": 4.671041965484619,
+          "rmse": 6.150565147399902
+        },
+        {
+          "unit": 15,
+          "n_cycles": 67,
+          "mae": 2.7046635150909424,
+          "rmse": 3.457942485809326
+        }
+      ]
+    }
+  },
+  "test_reuse_disclosure": "Official test outcomes were inspected in the original baseline study. Extension test metrics are descriptive reused-test evaluation, not an untouched confirmatory holdout.",
+  "runtime": {
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4070 Ti SUPER",
+    "torch_version": "2.5.1+cu121",
+    "cuda_version": "12.1",
+    "fit_seconds_full_dev": 21.030214099999284,
+    "predict_seconds_test": 0.20667369999864604,
+    "total_seconds": 74.71145969999634,
+    "parameter_count": 4081,
+    "deterministic_algorithms": true
+  },
+  "artifacts": {
+    "cv_results.csv": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\extended\\cnn\\cv_results.csv",
+    "cv_fold_assignments.csv": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\extended\\cnn\\cv_fold_assignments.csv",
+    "training_history.csv": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\extended\\cnn\\training_history.csv",
+    "model.pt": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\extended\\cnn\\model.pt",
+    "cv_window_predictions.parquet": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\extended\\cnn\\cv_window_predictions.parquet",
+    "test_window_predictions.parquet": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\extended\\cnn\\test_window_predictions.parquet",
+    "test_cycle_predictions.csv": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\extended\\cnn\\test_cycle_predictions.csv",
+    "protocol.json": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\extended\\cnn\\protocol.json",
+    "metrics.json": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\extended\\cnn\\metrics.json",
+    "rul_curves_png": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\extended\\cnn\\test_engine_rul_curves.png",
+    "training_history_png": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\extended\\cnn\\training_history.png"
+  }
+}

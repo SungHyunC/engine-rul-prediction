@@ -1,0 +1,4 @@
+fold,train_units,validation_units,n_train_windows,n_validation_windows
+1,"[2, 10, 18, 20]","[5, 16]",57607,29903
+2,"[2, 5, 16, 18]","[10, 20]",58900,28610
+3,"[5, 10, 16, 20]","[2, 18]",58513,28997

@@ -1,0 +1,338 @@
+{
+  "selected_model": "ridge",
+  "selection_metric": "dev_cv_macro_engine_cycle_rmse",
+  "feature_columns": [
+    "alt__mean",
+    "alt__std",
+    "alt__min",
+    "alt__max",
+    "alt__slope",
+    "Mach__mean",
+    "Mach__std",
+    "Mach__min",
+    "Mach__max",
+    "Mach__slope",
+    "TRA__mean",
+    "TRA__std",
+    "TRA__min",
+    "TRA__max",
+    "TRA__slope",
+    "T2__mean",
+    "T2__std",
+    "T2__min",
+    "T2__max",
+    "T2__slope",
+    "T24__mean",
+    "T24__std",
+    "T24__min",
+    "T24__max",
+    "T24__slope",
+    "T30__mean",
+    "T30__std",
+    "T30__min",
+    "T30__max",
+    "T30__slope",
+    "T48__mean",
+    "T48__std",
+    "T48__min",
+    "T48__max",
+    "T48__slope",
+    "T50__mean",
+    "T50__std",
+    "T50__min",
+    "T50__max",
+    "T50__slope",
+    "P15__mean",
+    "P15__std",
+    "P15__min",
+    "P15__max",
+    "P15__slope",
+    "P2__mean",
+    "P2__std",
+    "P2__min",
+    "P2__max",
+    "P2__slope",
+    "P21__mean",
+    "P21__std",
+    "P21__min",
+    "P21__max",
+    "P21__slope",
+    "P24__mean",
+    "P24__std",
+    "P24__min",
+    "P24__max",
+    "P24__slope",
+    "Ps30__mean",
+    "Ps30__std",
+    "Ps30__min",
+    "Ps30__max",
+    "Ps30__slope",
+    "P40__mean",
+    "P40__std",
+    "P40__min",
+    "P40__max",
+    "P40__slope",
+    "P50__mean",
+    "P50__std",
+    "P50__min",
+    "P50__max",
+    "P50__slope",
+    "Nf__mean",
+    "Nf__std",
+    "Nf__min",
+    "Nf__max",
+    "Nf__slope",
+    "Nc__mean",
+    "Nc__std",
+    "Nc__min",
+    "Nc__max",
+    "Nc__slope",
+    "Wf__mean",
+    "Wf__std",
+    "Wf__min",
+    "Wf__max",
+    "Wf__slope"
+  ],
+  "seed": 410,
+  "development_units": [
+    2,
+    5,
+    10,
+    16,
+    18,
+    20
+  ],
+  "test_units": [
+    11,
+    14,
+    15
+  ],
+  "evaluation_notes": {
+    "cycle_aggregation": "Mean of all window predictions within an engine/flight cycle; available at flight end.",
+    "macro_average": "Unweighted mean of per-engine MAE or RMSE; cycles equally weighted within each engine.",
+    "fit_weights": "Relative weights 1 / windows_in_engine_cycle / cycles_in_engine, normalized to mean 1 (sum = number of fitting windows). Both stages use only the current fitting partition.",
+    "selection": "Three-fold GroupKFold on development engines only; test metrics never select the model.",
+    "prediction_policy": "Raw predictions are retained without clipping or target transformation.",
+    "model_scope": "All three candidate models are refitted on all development engines and evaluated once on test engines."
+  },
+  "cv_summary": [
+    {
+      "model": "dummy_mean",
+      "macro_engine_cycle_mae": 18.8506012979997,
+      "macro_engine_cycle_rmse": 21.91406659669934,
+      "n_heldout_engines": 6,
+      "n_folds": 3
+    },
+    {
+      "model": "ridge",
+      "macro_engine_cycle_mae": 9.59402577082316,
+      "macro_engine_cycle_rmse": 11.383442719777426,
+      "n_heldout_engines": 6,
+      "n_folds": 3
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "macro_engine_cycle_mae": 9.748944809512134,
+      "macro_engine_cycle_rmse": 11.774806888008094,
+      "n_heldout_engines": 6,
+      "n_folds": 3
+    }
+  ],
+  "test_metrics": {
+    "dummy_mean": {
+      "windows": {
+        "macro_engine_mae": 17.647678990616253,
+        "macro_engine_rmse": 20.42824621667652,
+        "micro_mae": 16.913364749631338,
+        "micro_rmse": 19.711205561086597,
+        "n_windows": 20796,
+        "n_engines": 3,
+        "per_engine": [
+          {
+            "unit": 11,
+            "n_windows": 11030,
+            "mae": 16.214385010577214,
+            "rmse": 18.976557141985214
+          },
+          {
+            "unit": 14,
+            "n_windows": 2574,
+            "mae": 19.763273763273766,
+            "rmse": 22.601585117678134
+          },
+          {
+            "unit": 15,
+            "n_windows": 7192,
+            "mae": 16.965378197997776,
+            "rmse": 19.706596390366208
+          }
+        ]
+      },
+      "cycles": {
+        "macro_engine_mae": 17.234927799302625,
+        "macro_engine_rmse": 20.1041449154113,
+        "micro_mae": 17.372937293729375,
+        "micro_rmse": 20.290519227389222,
+        "n_cycles": 202,
+        "n_engines": 3,
+        "per_engine": [
+          {
+            "unit": 11,
+            "n_cycles": 59,
+            "mae": 15.745762711864405,
+            "rmse": 18.675593103775253
+          },
+          {
+            "unit": 14,
+            "n_cycles": 76,
+            "mae": 19.00877192982456,
+            "rmse": 21.953233120532484
+          },
+          {
+            "unit": 15,
+            "n_cycles": 67,
+            "mae": 16.950248756218908,
+            "rmse": 19.683608521926168
+          }
+        ]
+      },
+      "fit_seconds": 0.011104300006991252,
+      "predict_seconds": 0.001975200000742916
+    },
+    "ridge": {
+      "windows": {
+        "macro_engine_mae": 9.952354113260904,
+        "macro_engine_rmse": 11.433842976888021,
+        "micro_mae": 9.751236915588379,
+        "micro_rmse": 11.229825973510742,
+        "n_windows": 20796,
+        "n_engines": 3,
+        "per_engine": [
+          {
+            "unit": 11,
+            "n_windows": 11030,
+            "mae": 9.885566711425781,
+            "rmse": 11.389638900756836
+          },
+          {
+            "unit": 14,
+            "n_windows": 2574,
+            "mae": 10.80252456665039,
+            "rmse": 12.386109352111816
+          },
+          {
+            "unit": 15,
+            "n_windows": 7192,
+            "mae": 9.168971061706543,
+            "rmse": 10.52578067779541
+          }
+        ]
+      },
+      "cycles": {
+        "macro_engine_mae": 9.878441174825033,
+        "macro_engine_rmse": 11.276223500569662,
+        "micro_mae": 9.911874771118164,
+        "micro_rmse": 11.353236198425293,
+        "n_cycles": 202,
+        "n_engines": 3,
+        "per_engine": [
+          {
+            "unit": 11,
+            "n_cycles": 59,
+            "mae": 10.002551078796387,
+            "rmse": 11.416742324829102
+          },
+          {
+            "unit": 14,
+            "n_cycles": 76,
+            "mae": 10.739153861999512,
+            "rmse": 12.296005249023438
+          },
+          {
+            "unit": 15,
+            "n_cycles": 67,
+            "mae": 8.8936185836792,
+            "rmse": 10.115922927856445
+          }
+        ]
+      },
+      "fit_seconds": 0.21597120000660652,
+      "predict_seconds": 0.010201899996900465
+    },
+    "hist_gradient_boosting": {
+      "windows": {
+        "macro_engine_mae": 10.110289671774998,
+        "macro_engine_rmse": 12.00508116514654,
+        "micro_mae": 9.429825501576698,
+        "micro_rmse": 11.373736566585302,
+        "n_windows": 20796,
+        "n_engines": 3,
+        "per_engine": [
+          {
+            "unit": 11,
+            "n_windows": 11030,
+            "mae": 9.189631940766322,
+            "rmse": 11.158803073460819
+          },
+          {
+            "unit": 14,
+            "n_windows": 2574,
+            "mae": 12.409434000885554,
+            "rmse": 14.443918062029724
+          },
+          {
+            "unit": 15,
+            "n_windows": 7192,
+            "mae": 8.731803073673118,
+            "rmse": 10.412522359949078
+          }
+        ]
+      },
+      "cycles": {
+        "macro_engine_mae": 9.755344550107914,
+        "macro_engine_rmse": 11.227211504115965,
+        "micro_mae": 9.899117939752582,
+        "micro_rmse": 11.563445803696451,
+        "n_cycles": 202,
+        "n_engines": 3,
+        "per_engine": [
+          {
+            "unit": 11,
+            "n_cycles": 59,
+            "mae": 8.748938609488762,
+            "rmse": 10.080780574029333
+          },
+          {
+            "unit": 14,
+            "n_cycles": 76,
+            "mae": 12.087675348249002,
+            "rmse": 13.930926221487024
+          },
+          {
+            "unit": 15,
+            "n_cycles": 67,
+            "mae": 8.429419692585977,
+            "rmse": 9.669927716831541
+          }
+        ]
+      },
+      "fit_seconds": 3.8340199000012944,
+      "predict_seconds": 0.19391729999915697
+    }
+  },
+  "artifacts": {
+    "models": {
+      "dummy_mean": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\results\\model_dummy_mean.joblib",
+      "ridge": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\results\\model_ridge.joblib",
+      "hist_gradient_boosting": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\results\\model_hist_gradient_boosting.joblib"
+    },
+    "cv_results_csv": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\results\\cv_results.csv",
+    "cv_fold_assignments_csv": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\results\\cv_fold_assignments.csv",
+    "test_window_predictions_parquet": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\results\\test_window_predictions.parquet",
+    "test_window_predictions_csv": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\results\\test_window_predictions.csv",
+    "test_cycle_predictions_csv": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\results\\test_cycle_predictions.csv",
+    "rul_curves_png": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\results\\test_engine_rul_curves.png",
+    "error_comparison_png": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\results\\test_model_error_comparison.png",
+    "metrics_json": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\results\\metrics.json"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "dataset": "N-CMAPSS_DS02-006.h5",
+  "source_type": "third_party_redistribution",
+  "original_source": "https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/",
+  "original_paper": "https://doi.org/10.3390/data6010005",
+  "mirror_doi": "https://doi.org/10.6084/m9.figshare.20436504.v1",
+  "mirror_author": "Hao Li",
+  "download_url": "https://ndownloader.figshare.com/files/36563133",
+  "bytes": 2450472504,
+  "md5": "61056251b36290e11371e017eed70eac",
+  "sha256": "47971a68b239ecb756833218a95d68ded6eb7e63ee84e86671c8b188de1ca765",
+  "verified_at_utc": "2026-10-02T12:00:54.085653+00:00",
+  "verification_scope": "Matches Figshare published MD5; not independently compared byte-for-byte with NASA archive."
+}

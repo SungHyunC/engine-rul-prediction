@@ -1,0 +1,115 @@
+{
+  "dataset_split": "dev",
+  "repeats": 3,
+  "config": {
+    "dataset": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\data\\raw\\N-CMAPSS_DS02-006.h5",
+    "window": 60,
+    "stride": 60,
+    "chunk_rows": 120000,
+    "workers": 4,
+    "seed": 410,
+    "benchmark_workers": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "benchmark_chunk_rows": [
+      1024,
+      8192,
+      120000
+    ],
+    "benchmark_repeats": 3
+  },
+  "timing_scope": "HDF5 metadata scan, sensor reads, process spawning (including worker imports), feature calculations and result assembly. Excludes initial imports in the parent process, result hashing and saving.",
+  "cache_policy": "One complete warmup; OS cache is not flushed. No cold-disk performance claim.",
+  "memory_scope": "Peak sampled sum of worker process-tree RSS every 100 ms. Shared pages may be counted more than once; not physical memory consumption.",
+  "correctness": "Every run has exactly the same ordered schema, dtype and pandas row fingerprint.",
+  "fingerprint_version": "ordered-schema-dtypes-pandas-rows-v2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]",
+  "cpu_count_logical": 16,
+  "cpu_count_physical": 8,
+  "total_memory_bytes": 33397125120,
+  "summary": [
+    {
+      "workers": 1,
+      "chunk_rows": 120000,
+      "median_seconds": 2.152595999999903,
+      "min_seconds": 2.1521438999989186,
+      "max_seconds": 2.189645099999325,
+      "peak_rss_mib": 200.99609375,
+      "input_rows": 5263447,
+      "output_windows": 87510,
+      "speedup_vs_one_worker": 1.0,
+      "efficiency": 1.0,
+      "input_rows_per_second": 2445162.4921723525
+    },
+    {
+      "workers": 2,
+      "chunk_rows": 120000,
+      "median_seconds": 1.7775001999980304,
+      "min_seconds": 1.7718508999969345,
+      "max_seconds": 1.8075142000016058,
+      "peak_rss_mib": 389.91015625,
+      "input_rows": 5263447,
+      "output_windows": 87510,
+      "speedup_vs_one_worker": 1.2110243363135984,
+      "efficiency": 0.6055121681567992,
+      "input_rows_per_second": 2961151.284261927
+    },
+    {
+      "workers": 4,
+      "chunk_rows": 1024,
+      "median_seconds": 2.3434711000008974,
+      "min_seconds": 2.332830899998953,
+      "max_seconds": 2.388625100000354,
+      "peak_rss_mib": 558.12890625,
+      "input_rows": 5263447,
+      "output_windows": 87510,
+      "speedup_vs_one_worker": 0.9185502650316784,
+      "efficiency": 0.2296375662579196,
+      "input_rows_per_second": 2246004.655230433
+    },
+    {
+      "workers": 4,
+      "chunk_rows": 8192,
+      "median_seconds": 1.6365541999984998,
+      "min_seconds": 1.585471200000029,
+      "max_seconds": 1.7847211999978754,
+      "peak_rss_mib": 564.34375,
+      "input_rows": 5263447,
+      "output_windows": 87510,
+      "speedup_vs_one_worker": 1.3153221567619797,
+      "efficiency": 0.32883053919049493,
+      "input_rows_per_second": 3216176.402837636
+    },
+    {
+      "workers": 4,
+      "chunk_rows": 120000,
+      "median_seconds": 1.473291500005871,
+      "min_seconds": 1.4719171000033384,
+      "max_seconds": 2.2850628000014694,
+      "peak_rss_mib": 577.49609375,
+      "input_rows": 5263447,
+      "output_windows": 87510,
+      "speedup_vs_one_worker": 1.4610794944458207,
+      "efficiency": 0.3652698736114552,
+      "input_rows_per_second": 3572576.7779010637
+    },
+    {
+      "workers": 8,
+      "chunk_rows": 120000,
+      "median_seconds": 1.6212204000039492,
+      "min_seconds": 1.5983666000029189,
+      "max_seconds": 1.6372422999993432,
+      "peak_rss_mib": 933.51953125,
+      "input_rows": 5263447,
+      "output_windows": 87510,
+      "speedup_vs_one_worker": 1.3277627150476639,
+      "efficiency": 0.16597033938095798,
+      "input_rows_per_second": 3246595.5893394747
+    }
+  ],
+  "created_at_utc": "2026-10-02T12:28:56.015777+00:00"
+}

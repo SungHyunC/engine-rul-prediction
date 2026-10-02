@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-02T12:19:40.574191+00:00",
+  "status": "declared_before_extension_fitting",
+  "dataset": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\data\\raw\\N-CMAPSS_DS02-006.h5",
+  "source_sha256": "47971a68b239ecb756833218a95d68ded6eb7e63ee84e86671c8b188de1ca765",
+  "extraction_code_sha256": "2b04f165073a16577d2aa0167b0f39b5beaadde7894113db499b03cd50eb6045",
+  "seed": 410,
+  "workers": 4,
+  "chunk_rows": 120000,
+  "window_stride_grid": [
+    [
+      30,
+      15
+    ],
+    [
+      30,
+      30
+    ],
+    [
+      60,
+      30
+    ],
+    [
+      60,
+      60
+    ],
+    [
+      120,
+      60
+    ],
+    [
+      120,
+      120
+    ]
+  ],
+  "models": {
+    "ridge": {
+      "alpha": 10.0,
+      "scaler": "training-only weighted StandardScaler"
+    },
+    "hist_gradient_boosting": {
+      "max_iter": 100,
+      "max_leaf_nodes": 15,
+      "l2_regularization": 1.0,
+      "early_stopping": false
+    }
+  },
+  "policies": [
+    "raw",
+    "max(0, window_prediction), before flight averaging"
+  ],
+  "selection": "Minimum mean of six validation-engine cycle RMSEs; fixed three engine-disjoint folds anchored to 60/60 development features.",
+  "tie_break": "Ridge first, raw policy first, then ascending window and stride, only for exactly equal CV RMSE.",
+  "fit_weights": "Reuse baseline training-only equal-engine/equal-cycle weights normalized to mean one.",
+  "test_status": "Reused test set, already inspected during initial baseline. Extension and clipping candidates are exploratory; no untouched holdout claim.",
+  "baseline": "Original output/results raw baseline remains unchanged.",
+  "development_units": [
+    2,
+    5,
+    10,
+    16,
+    18,
+    20
+  ],
+  "test_units": [
+    11,
+    14,
+    15
+  ],
+  "fold_assignments": [
+    {
+      "train_units": [
+        2,
+        10,
+        18,
+        20
+      ],
+      "validation_units": [
+        5,
+        16
+      ]
+    },
+    {
+      "train_units": [
+        2,
+        5,
+        16,
+        18
+      ],
+      "validation_units": [
+        10,
+        20
+      ]
+    },
+    {
+      "train_units": [
+        5,
+        10,
+        16,
+        20
+      ],
+      "validation_units": [
+        2,
+        18
+      ]
+    }
+  ]
+}

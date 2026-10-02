@@ -1,0 +1,24 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+data/
+models/
+tmp/
+output/qa/
+output/build/
+*.partial
+tools/.slides-build/
+.chart-data-*/
+*.joblib
+*.pt
+# Version the small, verified checkpoints used by the delivered project.
+!output/results/model_dummy_mean.joblib
+!output/results/model_ridge.joblib
+!output/results/model_hist_gradient_boosting.joblib
+!output/extended/sensitivity/selected_model.joblib
+!output/extended/cnn/model.pt
+!output/final/model.pt
+.env
+.env.*
+!.env.example

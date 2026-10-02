@@ -1,0 +1,61 @@
+{
+  "dev": {
+    "input_rows": 5263447,
+    "segments": 446,
+    "candidate_windows": 87510,
+    "dropped_nonfinite_windows": 0,
+    "incomplete_tail_samples": 12847,
+    "output_rows": 87510,
+    "window": 60,
+    "stride": 60,
+    "chunk_rows": 120000,
+    "workers": 4,
+    "std_ddof": 0,
+    "slope_unit": "per_sample",
+    "target_position": "window_end",
+    "nonfinite_policy": "drop_window_if_input_endpoint_target_or_output_nonfinite",
+    "elapsed_seconds": 1.4662478999962332,
+    "sha256_rows": "5989ba5e44e0c07d4e5917133ae81d39c3a7d36004069339a1b06fc1aa34f8bc"
+  },
+  "test": {
+    "input_rows": 1253743,
+    "segments": 202,
+    "candidate_windows": 20796,
+    "dropped_nonfinite_windows": 0,
+    "incomplete_tail_samples": 5983,
+    "output_rows": 20796,
+    "window": 60,
+    "stride": 60,
+    "chunk_rows": 120000,
+    "workers": 4,
+    "std_ddof": 0,
+    "slope_unit": "per_sample",
+    "target_position": "window_end",
+    "nonfinite_policy": "drop_window_if_input_endpoint_target_or_output_nonfinite",
+    "elapsed_seconds": 1.1124705000038375,
+    "sha256_rows": "c3d54175bbac939da2a459a21e022a883531251f628c503a9a7a27cd7384a4ad"
+  },
+  "config": {
+    "dataset": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\data\\raw\\N-CMAPSS_DS02-006.h5",
+    "window": 60,
+    "stride": 60,
+    "chunk_rows": 120000,
+    "workers": 4,
+    "seed": 410,
+    "benchmark_workers": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "benchmark_chunk_rows": [
+      1024,
+      8192,
+      120000
+    ],
+    "benchmark_repeats": 3
+  },
+  "fingerprint_version": "ordered-schema-dtypes-pandas-rows-v2",
+  "dataset_sha256": "47971a68b239ecb756833218a95d68ded6eb7e63ee84e86671c8b188de1ca765",
+  "created_at_utc": "2026-10-02T12:07:22.566735+00:00"
+}

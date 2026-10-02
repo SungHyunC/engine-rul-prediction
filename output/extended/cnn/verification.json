@@ -1,0 +1,19 @@
+{
+  "test_checkpoint_replay_windows": 20796,
+  "max_abs_replay_difference": 0.0,
+  "development_cv_predicted_once_windows": 87510,
+  "heldout_dev_units": [
+    2,
+    5,
+    10,
+    16,
+    18,
+    20
+  ],
+  "test_cycles": 202,
+  "negative_test_cycle_predictions": 0,
+  "minimum_test_cycle_prediction": 1.8182241,
+  "training_epochs_recorded": 48,
+  "saved_metrics_recomputed": true,
+  "test_reuse_disclosure": "Official test outcomes were inspected in the original baseline study. Extension test metrics are descriptive reused-test evaluation, not an untouched confirmatory holdout."
+}

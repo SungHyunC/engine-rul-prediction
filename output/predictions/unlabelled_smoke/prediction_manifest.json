@@ -1,0 +1,33 @@
+{
+  "dataset": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\data\\inference_smoke.h5",
+  "split": "test",
+  "model_card": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\output\\final\\model_card.json",
+  "model_sha256": "204d7e67ddf0dfe7fe2cc5a64d29c3e6b5b39d02c10c6a913963b258367cf8d7",
+  "input_target_required": false,
+  "n_windows": 476,
+  "n_cycles": 2,
+  "negative_cycle_predictions": 0,
+  "config": {
+    "window": 60,
+    "stride": 60,
+    "model": "cnn_1d",
+    "nonnegative": true
+  },
+  "audit": {
+    "input_rows": 28643,
+    "segments": 2,
+    "candidate_windows": 476,
+    "dropped_nonfinite_windows": 0,
+    "incomplete_tail_samples": 83,
+    "output_rows": 476,
+    "window": 60,
+    "stride": 60,
+    "chunk_rows": 120000,
+    "workers": 1,
+    "std_ddof": 0,
+    "slope_unit": "per_sample",
+    "target_position": null,
+    "nonfinite_policy": "drop_window_if_input_or_output_nonfinite"
+  },
+  "scope": "Cycle means are available at the end of each recorded flight; no target array was read."
+}

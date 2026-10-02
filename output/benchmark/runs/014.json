@@ -1,0 +1,8 @@
+{
+  "workers": 8,
+  "chunk_rows": 120000,
+  "elapsed_seconds": 1.5983666000029189,
+  "output_windows": 87510,
+  "input_rows": 5263447,
+  "sha256_rows": "5989ba5e44e0c07d4e5917133ae81d39c3a7d36004069339a1b06fc1aa34f8bc"
+}

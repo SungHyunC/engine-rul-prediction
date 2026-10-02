@@ -1,0 +1,79 @@
+{
+  "checked_at_utc": "2026-10-02T12:30:19.334393+00:00",
+  "experiment_date_local": "2026-10-02",
+  "student": "김성현",
+  "student_id": "2021271250",
+  "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "packages": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.2",
+    "h5py": "3.11.0",
+    "scikit-learn": "1.5.1",
+    "pyarrow": "16.1.0",
+    "psutil": "5.9.0",
+    "matplotlib": "3.9.2",
+    "requests": "2.32.3",
+    "threadpoolctl": "3.5.0",
+    "pytest": "9.0.3",
+    "joblib": "1.4.2",
+    "scipy": "1.13.1",
+    "torch": "2.5.1+cu121"
+  },
+  "config": {
+    "dataset": "C:\\Users\\sunghyun\\Documents\\ChatGPT\\BigDataProject\\data\\raw\\N-CMAPSS_DS02-006.h5",
+    "window": 60,
+    "stride": 60,
+    "chunk_rows": 120000,
+    "workers": 4,
+    "seed": 410,
+    "benchmark_workers": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "benchmark_chunk_rows": [
+      1024,
+      8192,
+      120000
+    ],
+    "benchmark_repeats": 3
+  },
+  "original_baseline_selected_by_development_cv": "ridge",
+  "output_checks": {
+    "dummy_mean": "Saved model predictions, identifiers and all aggregate metrics match",
+    "ridge": "Saved model predictions, identifiers and all aggregate metrics match",
+    "hist_gradient_boosting": "Saved model predictions, identifiers and all aggregate metrics match"
+  },
+  "benchmark_check": "All 19 passes match current development feature schema, dtypes and ordered values",
+  "test_results": "output/test_results.txt",
+  "source_sha256": {
+    "src/ncmapss_rul/__init__.py": "50f01bcc59718c4683ffde182f33781c4a8147a7762f158ae0703b08ca0250b7",
+    "src/ncmapss_rul/__main__.py": "2db8078cd834d0e18f8eda9b9f433294933bd13f08716d0d2a970e3bafcdc18e",
+    "src/ncmapss_rul/data.py": "8312b23628c261eb6d26674291cf6ff95dfaab046e2f22f2a7d8b3f9e49386df",
+    "src/ncmapss_rul/experiments.py": "153ce0ec6d095f495aa8c735ef07daaca45477bb42e6676294f6e4c0819bc2e3",
+    "src/ncmapss_rul/features.py": "f9a73293134229f841123aceb39daf594666cc26f9c6ed827b852b060683f945",
+    "src/ncmapss_rul/inference.py": "6255071df2f8f65814c7aee5d719cd133529784809497967b43effd2ee5c2af9",
+    "src/ncmapss_rul/modeling.py": "9d1bb0c589e0e542c0f57eb419b59f4925204dedf935097feb678301ab30ac09",
+    "src/ncmapss_rul/neural.py": "05d37480317002ba6222ac78af14a76222922c00fe8361084575925318a30dc0",
+    "tests/test_cli.py": "c4c48a63320e072ee41321e500c2d0305e9a231a70a4da28ec2342bbce49c574",
+    "tests/test_experiments.py": "ad726e0263b50700470476f54d3aaeb1ced78550a131b3a96e7e000d4ce51d19",
+    "tests/test_features.py": "31e5aae3874f9018130c5b4990594a4e3762f5a9a88be24b910b6c2dff42b792",
+    "tests/test_inference.py": "58bbd2d0ea666b52bbf149593dc6d06a21db431bd775e59fe8cea97aca6f5ecb",
+    "tests/test_inference_cnn.py": "919ffb6ce80ec4756ff34676829338b96962634dcf597fb742a5bf25710b6773",
+    "tests/test_modeling.py": "492b39715140b9f2f1e2ae0ec3b2c21eac967de1e6a05526f3ab07ef8e5c7eeb",
+    "tests/test_neural.py": "ef11ec28ee16780a9c7d2d99cf18b2781f60595a4f937ed3dff42d753e9ebda5",
+    "configs/default.json": "86aca0b42ce729e38339d10e42840bc0881a935935ed2ea92409bb6e2370ef65",
+    "configs/extended.json": "3cff5f7fe7cc05c58d60fa9229eb03d5132171397b3b2ddbb8f44935c0d909c3",
+    "requirements-tested.txt": "6607d05392974a6d55d6fe267503228141e6c5b3f0e8cbdfd961a485294966fb",
+    "run.ps1": "d924d5a37dcc87298d33aa16a05f4e54f84647eb4fe286c0f574ea6aa0c9aa9f",
+    "pyproject.toml": "2ed48df2a0d3a2c9673c6d98f8a7aa3c4a03e1652876b753bccdab3f6a9f6286"
+  },
+  "note": "Verification only: no model was refitted and no test-driven selection was made.",
+  "numerical_tolerance": "rtol=1e-6, atol=1e-6; accommodates float32 Ridge predictions widened in the multi-model output table",
+  "final_selected_by_development_cv": "cnn_1d",
+  "final_model_sha256": "204d7e67ddf0dfe7fe2cc5a64d29c3e6b5b39d02c10c6a913963b258367cf8d7",
+  "extension_verification": "output/extended_verification.json",
+  "test_reuse_disclosure": "Official test engines were already inspected. Extension test scores are exploratory reuse, not a new untouched holdout. CV is used for selection and is not nested-CV evidence."
+}

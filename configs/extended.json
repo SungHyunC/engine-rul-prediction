@@ -1,0 +1,20 @@
+{
+  "purpose": "Complete remaining experiments now; frozen before extension fitting",
+  "seed": 410,
+  "sensitivity": {
+    "window_stride_pairs": [[30, 15], [30, 30], [60, 30], [60, 60], [120, 60], [120, 120]],
+    "models": ["ridge", "hist_gradient_boosting"],
+    "prediction_policies": ["raw", "nonnegative"],
+    "folds": 3,
+    "selection": "development macro engine cycle RMSE only"
+  },
+  "cnn": {
+    "window": 60, "stride": 60, "epochs": 12, "batch_size": 512,
+    "learning_rate": 0.001, "target_scale": 100,
+    "channels": [18, 16, 32], "kernel_size": 5,
+    "output": "Softplus nonnegative RUL", "folds": 3,
+    "early_stopping": false
+  },
+  "evaluation_disclosure": "Official test engines were previously inspected. Extension test results are exploratory, not a fresh untouched holdout. All extension configuration and deployment selection uses development CV only.",
+  "operating_scope": "One-PC DS02 research experiment; no multi-node or real-aircraft deployment claim."
+}

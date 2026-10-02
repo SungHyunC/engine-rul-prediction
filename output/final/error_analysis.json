@@ -1,0 +1,8 @@
+{
+  "selected_candidate": "cnn_1d",
+  "n_cycles": 202,
+  "negative_predictions": 0,
+  "maximum_absolute_error": 16.008484000000003,
+  "stage_definition": "Post-hoc diagnostic bins from true RUL: <=10, (10,30], >30. Not model inputs or selection criteria.",
+  "scope": "Descriptive audit of previously inspected test engines; no new validation claim"
+}

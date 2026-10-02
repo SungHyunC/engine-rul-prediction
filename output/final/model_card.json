@@ -1,0 +1,222 @@
+{
+  "created_at_utc": "2026-10-02T12:22:51.263346+00:00",
+  "selected_candidate": "cnn_1d",
+  "kind": "torch",
+  "selection_rule": "Minimum development macro engine cycle RMSE; test metrics are not selection inputs",
+  "cv_macro_engine_cycle_rmse": 6.575257579485576,
+  "config": {
+    "window": 60,
+    "stride": 60,
+    "model": "cnn_1d",
+    "nonnegative": true
+  },
+  "model_file": "model.pt",
+  "model_sha256": "204d7e67ddf0dfe7fe2cc5a64d29c3e6b5b39d02c10c6a913963b258367cf8d7",
+  "feature_columns": [
+    "alt__mean",
+    "alt__std",
+    "alt__min",
+    "alt__max",
+    "alt__slope",
+    "Mach__mean",
+    "Mach__std",
+    "Mach__min",
+    "Mach__max",
+    "Mach__slope",
+    "TRA__mean",
+    "TRA__std",
+    "TRA__min",
+    "TRA__max",
+    "TRA__slope",
+    "T2__mean",
+    "T2__std",
+    "T2__min",
+    "T2__max",
+    "T2__slope",
+    "T24__mean",
+    "T24__std",
+    "T24__min",
+    "T24__max",
+    "T24__slope",
+    "T30__mean",
+    "T30__std",
+    "T30__min",
+    "T30__max",
+    "T30__slope",
+    "T48__mean",
+    "T48__std",
+    "T48__min",
+    "T48__max",
+    "T48__slope",
+    "T50__mean",
+    "T50__std",
+    "T50__min",
+    "T50__max",
+    "T50__slope",
+    "P15__mean",
+    "P15__std",
+    "P15__min",
+    "P15__max",
+    "P15__slope",
+    "P2__mean",
+    "P2__std",
+    "P2__min",
+    "P2__max",
+    "P2__slope",
+    "P21__mean",
+    "P21__std",
+    "P21__min",
+    "P21__max",
+    "P21__slope",
+    "P24__mean",
+    "P24__std",
+    "P24__min",
+    "P24__max",
+    "P24__slope",
+    "Ps30__mean",
+    "Ps30__std",
+    "Ps30__min",
+    "Ps30__max",
+    "Ps30__slope",
+    "P40__mean",
+    "P40__std",
+    "P40__min",
+    "P40__max",
+    "P40__slope",
+    "P50__mean",
+    "P50__std",
+    "P50__min",
+    "P50__max",
+    "P50__slope",
+    "Nf__mean",
+    "Nf__std",
+    "Nf__min",
+    "Nf__max",
+    "Nf__slope",
+    "Nc__mean",
+    "Nc__std",
+    "Nc__min",
+    "Nc__max",
+    "Nc__slope",
+    "Wf__mean",
+    "Wf__std",
+    "Wf__min",
+    "Wf__max",
+    "Wf__slope"
+  ],
+  "observable_variables": [
+    "alt",
+    "Mach",
+    "TRA",
+    "T2",
+    "T24",
+    "T30",
+    "T48",
+    "T50",
+    "P15",
+    "P2",
+    "P21",
+    "P24",
+    "Ps30",
+    "P40",
+    "P50",
+    "Nf",
+    "Nc",
+    "Wf"
+  ],
+  "test_metrics": {
+    "windows": {
+      "macro_engine_mae": 4.675932725270589,
+      "macro_engine_rmse": 6.095227559407552,
+      "micro_mae": 4.960676670074463,
+      "micro_rmse": 6.568467617034912,
+      "n_windows": 20796,
+      "n_engines": 3,
+      "per_engine": [
+        {
+          "unit": 11,
+          "n_windows": 11030,
+          "mae": 6.249836444854736,
+          "rmse": 7.786595344543457
+        },
+        {
+          "unit": 14,
+          "n_windows": 2574,
+          "mae": 4.701723575592041,
+          "rmse": 6.317843437194824
+        },
+        {
+          "unit": 15,
+          "n_windows": 7192,
+          "mae": 3.0762381553649902,
+          "rmse": 4.181243896484375
+        }
+      ]
+    },
+    "cycles": {
+      "macro_engine_mae": 4.52059006690979,
+      "macro_engine_rmse": 5.695465882619222,
+      "micro_mae": 4.461333751678467,
+      "micro_rmse": 5.876364231109619,
+      "n_cycles": 202,
+      "n_engines": 3,
+      "per_engine": [
+        {
+          "unit": 11,
+          "n_cycles": 59,
+          "mae": 6.186064720153809,
+          "rmse": 7.4778900146484375
+        },
+        {
+          "unit": 14,
+          "n_cycles": 76,
+          "mae": 4.671041965484619,
+          "rmse": 6.150565147399902
+        },
+        {
+          "unit": 15,
+          "n_cycles": 67,
+          "mae": 2.7046635150909424,
+          "rmse": 3.457942485809326
+        }
+      ]
+    }
+  },
+  "candidates": [
+    {
+      "candidate": "original_ridge",
+      "kind": "sklearn",
+      "cv_rmse": 11.383442719777426,
+      "config": {
+        "window": 60,
+        "stride": 60,
+        "model": "ridge",
+        "nonnegative": false
+      }
+    },
+    {
+      "candidate": "sensitivity_winner",
+      "kind": "sklearn",
+      "cv_rmse": 10.778886847696496,
+      "config": {
+        "window": 30,
+        "stride": 15,
+        "model": "ridge",
+        "nonnegative": true
+      }
+    },
+    {
+      "candidate": "cnn_1d",
+      "kind": "torch",
+      "cv_rmse": 6.575257579485576,
+      "config": {
+        "window": 60,
+        "stride": 60,
+        "model": "cnn_1d",
+        "nonnegative": true
+      }
+    }
+  ],
+  "evaluation_disclosure": "Official test engines were already inspected. Extension test scores are exploratory reuse, not a new untouched holdout. CV is used for selection and is not nested-CV evidence.",
+  "prediction_scope": "Research estimates at recorded flight end. Negative outputs depend on the selected policy; not validated for aircraft maintenance."
+}
