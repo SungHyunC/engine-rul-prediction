@@ -34,8 +34,8 @@ Feature extraction reached **1.461× speedup with four workers** versus one on t
 Use Python 3.12 to match the recorded experiment's major/minor version. The package supports Python 3.10+. From a local clone, the following shell commands set up the Python pipeline on macOS/Linux:
 
 ```bash
-git clone https://github.com/SungHyunC/BigDataProject.git
-cd BigDataProject
+git clone https://github.com/SungHyunC/engine-rul-prediction.git
+cd engine-rul-prediction
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e ".[test]"
