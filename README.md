@@ -1,6 +1,76 @@
-# 항공기 엔진 잔여수명 예측 / Aircraft engine RUL prediction
+# Aircraft Engine Remaining Useful Life Prediction
 
-김성현 · 2021271250 · DCCS410 · 실험일 / Experiment date: 2026-10-02
+A Python machine-learning pipeline for estimating **remaining flight cycles** from NASA N-CMAPSS DS02 simulated engine data. It processes **6.52 million sensor rows**, compares statistical baselines with a compact PyTorch 1D CNN, and supports prediction from HDF5 files without target labels.
+
+**Python · PyTorch · scikit-learn · HDF5 · multiprocessing · pytest**
+
+[English report](output/report_en.pdf) · [English slides](output/presentation_en.pptx) · [Model card](output/final/model_card.json) · [한국어 보고서](output/report_ko.pdf)
+
+![Pipeline overview: data preparation, model selection and inference](output/visuals/project_overview_en.png)
+
+## Engineering highlights
+
+- **Bounded sensor reads:** chunked HDF5 access and process-based feature extraction, with windows reset at engine and flight boundaries. The resulting feature table is kept in memory.
+- **Engine-aware evaluation:** three development folds separate engines; scaling and weights are fitted within each training partition. Six development engines and three test engines retain the official split.
+- **Model comparison:** mean, Ridge and histogram gradient boosting baselines; 24 sensitivity candidates; a 4,081-parameter CNN with nonnegative outputs.
+- **Reproducibility:** source checksums, cached-feature fingerprints, saved predictions and checkpoints, plus tests for boundaries, leakage, parallel parity and unlabeled inference.
+
+## Recorded results
+
+These results come from the committed **2 October 2026 experiment artifacts**. RMSE below is the mean of per-engine, flight-cycle RMSEs, in remaining flight cycles.
+
+| Model | Development CV RMSE | Test RMSE | Evidence |
+|---|---:|---:|---|
+| Original Ridge | 11.3834 | 11.2762 | [Baseline metrics](output/results/metrics.json) |
+| Sensitivity winner: Ridge, 30/15 windows | 10.7789 | 10.5913 | [Sensitivity metrics](output/extended/sensitivity/metrics.json) |
+| Selected 1D CNN | **6.5753** | **5.6955** | [Final model card](output/final/model_card.json) |
+
+The CNN was selected using development CV. **The extension test results are exploratory:** the same three test engines had already been inspected during the baseline study, and selection CV is not nested CV. This is a research project on simulated data, not a validated aircraft-maintenance system.
+
+Feature extraction reached **1.461× speedup with four workers** versus one on the recorded Windows PC (median 1.473 s vs. 2.153 s; three repeats after warmup). See the [benchmark measurements](output/benchmark/benchmark_summary.csv) for memory costs and other worker counts; this is not a multi-node or cold-disk benchmark.
+
+## Quick start
+
+Use Python 3.12 to match the recorded experiment's major/minor version. The package supports Python 3.10+. From a local clone, the following shell commands set up the Python pipeline on macOS/Linux:
+
+```bash
+git clone https://github.com/SungHyunC/BigDataProject.git
+cd BigDataProject
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e ".[test]"
+python -m pytest -q
+```
+
+The tests use synthetic fixtures and do not need the full dataset. CNN tests skip when PyTorch is absent. The committed [test log](output/test_results.txt) records 114 passes in the original Windows environment; it is not a fresh run on every supported platform. For the exact recorded dependency versions and Windows/CUDA setup, expand the documentation below.
+
+To run the complete computational pipeline, install the neural extra, download the **2.45 GB** dataset, then run the CLI. Allow additional disk space for download parts, features and sequence caches.
+
+```bash
+python -m pip install -e ".[neural]"
+python tools/download_data.py
+python -m ncmapss_rul full --repeats 3 --output output/reproduction
+```
+
+This runs inspection, preparation, baseline training, benchmarking, sensitivity analysis, CNN training, final model selection and prediction. It writes new results under `output/reproduction/` and uses shared caches under `data/`; it does not rebuild the PDF or slide artifacts. The CNN uses CUDA when available, otherwise CPU. Runtimes and numerical outputs can vary by platform. Existing published results can be inspected without running training.
+
+## Explore the implementation
+
+| Area | Entry point |
+|---|---|
+| HDF5 validation and feature extraction | [data.py](src/ncmapss_rul/data.py), [features.py](src/ncmapss_rul/features.py) |
+| Engine-disjoint evaluation and baselines | [modeling.py](src/ncmapss_rul/modeling.py) |
+| CNN training and sequence caching | [neural.py](src/ncmapss_rul/neural.py) |
+| Model selection and unlabeled inference | [inference.py](src/ncmapss_rul/inference.py) |
+| Experiment CLI and configuration | [__main__.py](src/ncmapss_rul/__main__.py), [default.json](configs/default.json) |
+| Validation coverage | [tests](tests/) |
+
+<details>
+<summary><strong>Full experiment documentation — English / 한국어</strong></summary>
+
+## 항공기 엔진 잔여수명 예측 / Aircraft engine RUL prediction
+
+김성현 · DCCS410 · 실험일 / Experiment date: 2026-10-02
 
 **구현 완료:** 기준모델, 24개 민감도 후보, GPU 1D CNN, 개발 검증에 따른 최종 모델 선택, 정답 없는 HDF5 예측, 오류 분석, 한영 보고서·발표자료와 제출 묶음을 완성했습니다. 구현을 이후 일정으로 남겨 두지 않았습니다.
 
@@ -217,3 +287,5 @@ After one full warmup, run three repeats per setting in seeded random order, eac
 | `tools/verify_extended.py`, `tools/analyze_errors.py` | 확장 결과 검증과 오류 분석 / Extension verification and error analysis |
 
 문서 생성 스크립트는 Codex 번들 문서 런타임과 Windows 글꼴을 사용합니다. 실험 코드는 `requirements-tested.txt`와 PyTorch 설치로 재실행할 수 있습니다. `configs/extended.json`은 고정한 확장 실험 명세이고, 실제 실행 명세와 선택 시각은 각 결과 폴더의 `protocol.json`에 기록합니다. / Artifact builders use Codex's bundled document runtime and Windows fonts. The research pipeline needs the tested requirements plus PyTorch. `configs/extended.json` records the fixed extension specification; executed protocols and selection timestamps are retained with results.
+
+</details>
